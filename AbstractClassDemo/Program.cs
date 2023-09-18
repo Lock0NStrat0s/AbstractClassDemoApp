@@ -9,18 +9,26 @@ class Program
     }
 }
 
-public abstract class InventoryItem
+public interface IPurchasable
 {
-    public string ProductName { get; set; }
-    public int QuantityOnHand { get; set; }
+    void Buy();
 }
 
-public class Book : InventoryItem
+public abstract class Vehicle : IPurchasable
 {
+    public string VIN { get; set; }
+    public string Manufacturer { get; set; }
+    public string Model { get; set; }
+    public int YearManufactured { get; set; }
 
+    public void Buy()
+    {
+        Console.WriteLine("Bought");
+    }
 }
 
-public class Vehicle : InventoryItem
+public class Car : Vehicle
 {
+    public int NumberOfWheels { get; set; } = 4;
 
 }
